@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">BMIApplication</string>
     <string name="textView">身長と体重を入力してください</string>
+    <string name="navigation">身長と体重を入力してください</string>
+    <string name="calcurate">計算</string>
 </resources>

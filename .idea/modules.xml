@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/BMICalcurationAndroid.iml" filepath="$PROJECT_DIR$/.idea/BMICalcurationAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/BMICalcurationAndroid-app.iml" filepath="$PROJECT_DIR$/app/BMICalcurationAndroid-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/git-BMICalcurationAndroid.iml" filepath="$PROJECT_DIR$/git-BMICalcurationAndroid.iml" />
     </modules>
   </component>
 </project>
