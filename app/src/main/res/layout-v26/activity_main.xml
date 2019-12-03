@@ -15,7 +15,7 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="107dp"
         android:layout_marginRight="107dp"
-        android:text="@string/navigation"
+        android:text="身長と体重を入力してください"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,13 +29,13 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
+        android:autofillHints="身長"
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="Autofill" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/input_weight"
@@ -54,20 +54,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
-        android:text="@string/bmiCalcuration"
+        android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_weight" />
-
-    <TextView
-        android:id="@+id/BMI_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
-        android:text="@string/bmiTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calcuration_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
