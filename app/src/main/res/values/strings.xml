@@ -4,4 +4,7 @@
     <string name="navigation">身長と体重を入力してください</string>
     <string name="bmiCalcuration">計算</string>
     <string name="bmiTextView">TextView</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
