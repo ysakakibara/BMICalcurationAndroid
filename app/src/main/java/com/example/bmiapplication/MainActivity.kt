@@ -12,10 +12,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (savedInstanceState == null) {
-            val transaction = supportFragmentManager.beginTransaction()
-//                transaction.add(R.id.calcurationFragment )
-                transaction.commit()
-        }
+//        if (savedInstanceState == null) {
+//            val transaction = supportFragmentManager.beginTransaction()
+//            transaction.add(R.id.contents, CalcurationFragment())
+//            transaction.commit()
+//        }
     }
 }
