@@ -1,15 +1,18 @@
 package com.example.bmiapplication
 
+import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.fragment_calcuration.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CalculationFragment : Fragment() {
-//    private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,31 +35,54 @@ class CalculationFragment : Fragment() {
             val weight = input_weight.text.toString()
 
             if (height == "" || weight == "") {
-                showErrorDialog("文字入れて")
+                CalculationLogic.showErrorDialog("数値が入力されていません", this.activity!!)
                 return@setOnClickListener
             } else if (height.length > 5 || weight.length > 5) {
-                showErrorDialog("文字多いよ")
+                CalculationLogic.showErrorDialog("入力値が大きすぎます", this.activity!!)
                 return@setOnClickListener
             }
 
-            // BMIを計算するためにfloat型に変換
-            val floHeight = (height.toFloat() * height.toFloat()) / 10000
-            val floWeight = weight.toFloat()
-
-            // BMIの計算
-            val result = (Math.round((floWeight / floHeight) * 10)).toFloat()
-
-            // 計算したBMIをTextViewに挿入
-            val bmi : String = (result / 10).toString()
+            val bmi = CalculationLogic.calculationBmi(height, weight)
             BMI_text.text = bmi
+
+            CalculationLogic.temporarilySaved(height, weight, bmi)
+        }
+
+        // 保存ボタン押下時処理
+        save_button.setOnClickListener {
+
+            if (input_height.text.toString() == "" || input_weight.text.toString() == "" || BMI_text.text.toString() == "") {
+                CalculationLogic.showErrorDialog("保存するデータの情報が足りません", this.activity!!)
+                return@setOnClickListener
+            } else if (input_height.text.toString().length > 5 || input_weight.text.toString().length > 5) {
+                CalculationLogic.showErrorDialog("入力値が大きすぎます", this.activity!!)
+                return@setOnClickListener
+            }
+
+            // 文字列を取得
+            val height = CalculationLogic.receiveHeightInf()
+            val weight = CalculationLogic.receiveWeightInf()
+            val bmi = CalculationLogic.receiveBmiInf()
+
+            val data: SharedPreferences = this.activity!!.getSharedPreferences("Data", Context.MODE_PRIVATE)
+            val editor = data.edit()
+
+            val date = SimpleDateFormat("yyyy/M/d", Locale.JAPAN).format(Date())
+
+            val bmiData = CalculationLogic.dataSaveChangeJson(date, height.toFloat(), weight.toFloat(), bmi.toFloat(),input_memo.text.toString(),
+                this.activity!!
+            )
+
+            editor.putString("BMI", bmiData.toString())
+
+            editor.apply()
+
+            val test = data.getString("BMI", "NoData")
+        }
+
+        delete_button.setOnClickListener {
+
         }
     }
 
-    private fun showErrorDialog(errorMessage: String) {
-        AlertDialog.Builder(this.activity!!)
-            .setTitle("エラー")
-            .setMessage(errorMessage)
-            .setPositiveButton("わかった"){ dialog, which -> }
-            .show()
-    }
 }
