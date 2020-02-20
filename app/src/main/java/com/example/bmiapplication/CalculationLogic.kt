@@ -4,15 +4,10 @@ import android.app.Activity
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
 import org.json.JSONObject
-import java.util.*
 
 class CalculationLogic {
 
     companion object {
-
-        private var tempHeight = ""
-        private var tempWeight = ""
-        private var tempBmi = ""
 
         fun showErrorDialog(errorMessage: String, activity: Activity) {
             AlertDialog.Builder(activity)
@@ -35,24 +30,6 @@ class CalculationLogic {
             val bmi: String = (result / 10).toString()
 
             return bmi
-        }
-
-        fun temporarilySaved(height: String, weight: String, bmi: String) {
-            tempHeight = height
-            tempWeight = weight
-            tempBmi = bmi
-        }
-
-        fun receiveHeightInf() : String {
-            return tempHeight
-        }
-
-        fun receiveWeightInf() : String {
-            return tempWeight
-        }
-
-        fun receiveBmiInf() : String {
-            return tempBmi
         }
 
         fun dataSaveChangeJson(
